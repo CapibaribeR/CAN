@@ -60,12 +60,12 @@ int main()
             pwm = sensor.read_u16();
             //rpm = 42218;
             corrente = 30127;
-            txMsg.data[0] = rpm >> 8;
-            RPM_inter = rpm << 8;
+            txMsg.data[0] = rpm & 0xFF;
+            //RPM_inter = rpm << 8;
             //RPM_inter = RPM_inter >> 8;
             //RPM = RPM_inter & 0x000000FF;
-            txMsg.data[1] = rpm & 0xFF;
-            txMsg.data[2] = rpm >> 8;
+            txMsg.data[1] = rpm >> 8;
+            txMsg.data[2] = 0;
             txMsg.data[3] = pwm & 0xFF;
             txMsg.data[4] = pwm >> 8;
             txMsg.data[5] = corrente & 0xFF;
